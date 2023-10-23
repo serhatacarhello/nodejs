@@ -7,33 +7,14 @@
     <title>Document</title>
   </head>
   <body>
+    <%- include('../views/partials/nav.ejs') %>
     <div class="container mt-3">
       <h1 class="text-center">Home</h1>
       <div class="row">
         <div class="col-12">
           <% products.forEach(product=> { %> <% if (product.isHome) { %>
           <!-- product card -->
-          <div class="card mb-3">
-            <div class="row">
-              <div class="col-4">
-                <img
-                  src="/images/<%=product.imageUrl %>"
-                  alt="<%=product.name %>"
-                  class="img-fluid"
-                />
-              </div>
-              <div class="col-8">
-                <div class="card-body">
-                  <h5 class="card-title"><%=product.name %></h5>
-                  <p class="card-text"><%=product.price %></p>
-                </div>
-                <a href="<%=product.id %>" class="btn btn-primary btn-sm"
-                  >Details</a
-                >
-              </div>
-            </div>
-          </div>
-          <% } %> <% }) %>
+          <%- include("../views/partials/product", product) %> <% } %> <% }) %>
         </div>
       </div>
     </div>
