@@ -1,45 +1,48 @@
-var http = require("http");
-var fs = require("fs");
+const express = require("express");
+const app = express();
 
-var server = http.createServer((req, res) => {
-  console.log(req.url);
+app.set("view engine", "ejs");
+app.use(express.static("public"));
 
-  if (req.url == "/") {
-    fs.readFile("index.html", (err, html) => {
-      if (err) {
-        res.writeHead(404, { "Content-Type": "text/html" });
-        res.end("404 Not Found");
-      } else {
-        res.writeHead(200, { "Content-Type": "text/html" });
-        res.write(html);
-        res.end();
-      }
-    });
-  } else if (req.url == "/products") {
-    fs.readFile("urunler.html", (err, html) => {
-      if (err) {
-        res.writeHead(404, { "Content-Type": "text/html" });
-        res.end("404 Not Found");
-      } else {
-        res.writeHead(200, { "Content-Type": "text/html" });
-        res.write(html);
-        res.end();
-      }
-    });
-  } else {
-    fs.readFile("404.html", (err, html) => {
-      if (err) {
-        res.writeHead(404, { "Content-Type": "text/html" });
-        res.end("404 Not Found");
-      } else {
-        res.writeHead(200, { "Content-Type": "text/html" });
-        res.write(html);
-        res.end();
-      }
-    });
-  }
+const data = [
+  {
+    id: 1,
+    name: "iphone 14",
+    price: 7000,
+    isActive: true,
+    imageUrl: "1.jpeg",
+  },
+  {
+    id: 2,
+    name: "iphone 15",
+    price: 8000,
+    isActive: true,
+    imageUrl: "2.jpeg",
+  },
+  {
+    id: 3,
+    name: "iphone 16",
+    price: 9000,
+    isActive: false,
+    imageUrl: "3.jpeg",
+  },
+];
+
+// routes
+
+app.use("/products/:id", function (req, res) {
+  const product = data.find((i) => i.id == req.params.id);
+  res.render("product-details", { product });
 });
 
-server.listen(3000, () => {
-  console.log("Server 3000 portunda başlatıldı.");
+app.use("/products", function (req, res) {
+  res.render("products", { urunler: data });
+});
+
+app.use("/", function (req, res) {
+  res.render("index");
+});
+
+app.listen(3000, () => {
+  console.log("listening on port 3000");
 });

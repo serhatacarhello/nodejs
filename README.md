@@ -42,3 +42,24 @@ npm i nodemon
 npm install -g nodemon
 
 ```
+
+# ejs
+
+What is the "E" for? "Embedded?" Could be. How about "Effective," "Elegant," or just "Easy"? EJS is a simple templating language that lets you generate HTML markup with plain JavaScript. No religiousness about how to organize things. No reinvention of iteration and control-flow. It's just plain JavaScript.
+
+```
+npm install ejs
+```
+
++ create a views folder and get .html files in it and change the file extension to .ejs
+  
++ app.set("view engine", "ejs")
+
+//routes
+
+app.use("/products/:id", function (req, res) {
+  <!-- res.send("product details" + " " + req.params.id); --> // change send to render
+
+  res.render("product details" + " " + req.params.id);
+});
+

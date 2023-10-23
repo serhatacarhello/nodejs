@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product Details</title>
+    <!-- <link rel="stylesheet" href="/css/style.css" /> -->
+  </head>
+  <body>
+    <h1><%= product.name %></h1>
+    <img src="/images/<%=product.imageUrl%>" alt="phone" width="100px" />
+    <p>Price: $<%= product.price %></p>
+
+    <p>
+      <% if (product.isActive) { %>
+      <span>This product is for sale</span>
+      <% } else { %>
+      <span>This product is not for sale</span>
+      <% } %>
+    </p>
+  </body>
+</html>
