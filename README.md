@@ -63,3 +63,22 @@ app.use("/products/:id", function (req, res) {
   res.render("product details" + " " + req.params.id);
 });
 
+# How can I use static files in express js ?
+
+
+app.use(express.static("filename"))
+
+```
+app.use(express.static("public"));
+
+```
+# How can I use bootstrap css ?
+
+```
+//1  install lib on terminal
+npm i bootstrap@5.2.2
+
+//2 Add the node_modules folder that contains external libraries like Bootstrap to the project.
+app.use(express.static("node_modules"));
+
+```

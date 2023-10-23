@@ -3,6 +3,7 @@ const app = express();
 
 app.set("view engine", "ejs");
 app.use(express.static("public"));
+app.use(express.static("node_modules"));
 
 const data = [
   {
@@ -11,6 +12,7 @@ const data = [
     price: 7000,
     isActive: true,
     imageUrl: "1.jpeg",
+    isHome: true,
   },
   {
     id: 2,
@@ -18,6 +20,7 @@ const data = [
     price: 8000,
     isActive: true,
     imageUrl: "2.jpeg",
+    isHome: false,
   },
   {
     id: 3,
@@ -25,6 +28,7 @@ const data = [
     price: 9000,
     isActive: false,
     imageUrl: "3.jpeg",
+    isHome: true,
   },
 ];
 
@@ -36,11 +40,11 @@ app.use("/products/:id", function (req, res) {
 });
 
 app.use("/products", function (req, res) {
-  res.render("products", { urunler: data });
+  res.render("products", { products: data });
 });
 
 app.use("/", function (req, res) {
-  res.render("index");
+  res.render("index", { products: data });
 });
 
 app.listen(3000, () => {
