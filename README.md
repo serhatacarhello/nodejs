@@ -1,4 +1,4 @@
-#Nodejs Express js Nodemon
+##Nodejs Express js Nodemon
 
 #Nodejs
 install node js
@@ -29,7 +29,7 @@ npm install express --save
 
 ```
 
-# nodemon
+## nodemon
 
 nodemon is a tool that helps develop Node.js based applications by automatically restarting the node application when file changes in the directory are detected.
 
@@ -43,7 +43,7 @@ npm install -g nodemon
 
 ```
 
-# ejs
+## ejs
 
 What is the "E" for? "Embedded?" Could be. How about "Effective," "Elegant," or just "Easy"? EJS is a simple templating language that lets you generate HTML markup with plain JavaScript. No religiousness about how to organize things. No reinvention of iteration and control-flow. It's just plain JavaScript.
 
@@ -63,7 +63,7 @@ app.use("/products/:id", function (req, res) {
   res.render("product details" + " " + req.params.id);
 });
 
-# How can I use static files in express js ?
+## How can I use static files in express js ?
 
 
 app.use(express.static("filename"))
@@ -72,7 +72,7 @@ app.use(express.static("filename"))
 app.use(express.static("public"));
 
 ```
-# How can I use bootstrap css ?
+## How can I use bootstrap css ?
 
 ```
 //1  install lib on terminal
